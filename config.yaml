@@ -1,0 +1,24 @@
+template_pdf_path: "assets/template.pdf"
+font_path: "fonts/Montserrat-Regular.ttf"
+output_pdf_path: "assets/result.pdf"
+
+font_size: 10
+text_color_rgb: [220, 0, 0]  #
+
+salutation:
+  x: 60
+  y: 740
+
+greeting:
+  x: 60
+  y: 1200
+
+docx_table_index: 0          # если в документе несколько таблиц
+has_header_row: true         # если первая строка — заголовки
+
+# Форматирование строки
+salutation_format: "{dear} {name}!"
+greeting_format: "{greeting}"
+
+# Поведение
+skip_empty_rows: true
