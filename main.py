@@ -285,7 +285,6 @@ def generate_pdf(docx_path: str) -> str:
 
 
 def main() -> None:
-    # Строго: либо docx передан, либо в корне ровно один docx
     if len(sys.argv) >= 2:
         docx_path = sys.argv[1]
         if not os.path.exists(docx_path):
