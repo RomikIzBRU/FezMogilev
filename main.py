@@ -14,7 +14,7 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
 
-TZ_NAME = "Europe/Vienna"
+TZ_NAME = "Europe/Minsk"
 
 TEMPLATE_PDF = "template.pdf"
 FONT_TTF = "Montserrat-Regular.ttf"
@@ -74,7 +74,6 @@ def _tcs_from_row_xml(tr_xml: str):
         if child.tag == f"{{{W_NS}}}tc":
             out.append(child)
         elif child.tag == f"{{{W_NS}}}sdt":
-            # Внутри content control лежит w:sdtContent, а в нём — w:tc
             tcs = child.xpath("./w:sdtContent/w:tc", namespaces=NS)
             out.extend(tcs)
 
@@ -203,7 +202,6 @@ def make_overlay_pdf(
     c.setFillColorRGB(r / 255.0, g / 255.0, b / 255.0)
     c.setFont(FONT_NAME, FONT_SIZE)
 
-    # Надпись 1: "Уважаемый/ая ...!"
     draw_text_block(
         c=c,
         text=salutation_text,
@@ -248,7 +246,7 @@ def generate_pdf(docx_path: str) -> str:
     if len(reader0.pages) < 2:
         raise ValueError("template.pdf должен содержать минимум 2 страницы (1-я статичная, 2-я — образец).")
 
-    # Первая страница статична
+
     page1 = reader0.pages[0]
 
     # Размеры берём со второй страницы
